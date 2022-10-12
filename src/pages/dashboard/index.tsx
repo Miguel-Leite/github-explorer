@@ -4,6 +4,7 @@ import React, {
   useEffect
 } from "react";
 import { FiChevronRight } from 'react-icons/fi';
+import { Link } from "react-router-dom";
 
 import { IRepository } from "../../@types/IRepository";
 
@@ -64,7 +65,7 @@ const Dashboard: React.FC = () => {
 
       <Repositories>
         {repositories.map(repository => (
-          <a href="#" key={repository.full_name}>
+          <Link to={`/repository/${repository.full_name}`} key={repository.full_name}>
             <img src={repository.owner.avatar_url} alt={repository.owner.login} />
             <div>
               <strong>{repository.full_name}</strong>
@@ -72,7 +73,7 @@ const Dashboard: React.FC = () => {
             </div>
 
             <FiChevronRight size={20} />
-          </a>
+          </Link>
         ))}
       </Repositories>
     </>
